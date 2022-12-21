@@ -21,6 +21,7 @@ public class Libro {
     private String titulo;
     private String autor;
     private String editorial;
+    private String cover;
     private List<String> generos;
     private Date fechaPublicacion;
 }

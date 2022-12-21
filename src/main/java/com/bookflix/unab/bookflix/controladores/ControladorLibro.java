@@ -22,7 +22,7 @@ public class ControladorLibro {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Libro postLibro(@RequestBody Libro l){
+    public String postLibro(@RequestBody Libro l){
         return servicioLibro.guardarLibro(l);
     }
 

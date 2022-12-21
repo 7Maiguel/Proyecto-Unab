@@ -20,11 +20,15 @@ public class ServicioLibro {
         return rpLibro.findAll(Sort.by("fechaPublicacion").descending());
     }
 
-    public Libro guardarLibro(Libro l){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
-        Date fechaCreacionRegistro = new Date(dtf.format(LocalDateTime.now()));
-        l.setFechaPublicacion(fechaCreacionRegistro);
-        return rpLibro.save(l);
+    public String guardarLibro(Libro l){
+        if(l.getId() == null){
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+            Date fechaCreacionRegistro = new Date(dtf.format(LocalDateTime.now()));
+            l.setFechaPublicacion(fechaCreacionRegistro);
+            rpLibro.save(l);
+            return "Libro guardado !";
+        }
+        return "El libro que desea guardar ya existe";
     }
 
     public String eliminarLibro(String id){
@@ -33,7 +37,5 @@ public class ServicioLibro {
             return "Libro eliminado !";
         }
         return "El libro que desea eliminar no existe";
-
-
     }
 }
